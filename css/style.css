@@ -1,34 +1,138 @@
 body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.main-image-wrapper .coin {
+  z-index: 0;
+  width: inherit;
+  bottom: 0;
+  position: absolute;
+  height: auto;
 }
 .main-image-wrapper {
   height: 100vh;
   width: 100%;
-  background-image: url('/images/1920x1080.jpg');
-  background-size: cover;
+  background-image: url('../images/bg-girl.png');
   background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 .main-image-wrapper img {
   position: absolute;
-  /* background-color: rgba(0, 0, 0, 0.5); */
+  z-index: 1;
 }
 .main-image-wrapper .iphone {
-  bottom: 25px;
+  bottom: 20px;
   right: 20%;
-  width: 13%;
-  min-width: 200px;
+  width: 18%;
+  min-width: 230px;
+  animation: wobble-bottom 2s infinite;
+
 }
 .main-image-wrapper .vn-text {
-  width: 60%;
+  width: 50%;
   right: 3%;
-  top: 5%;
+  top: 3%;
   min-width: 300px;
-  -webkit-filter: drop-shadow(5px 5px 5px green);
-  filter: drop-shadow(5px 5px 5px green);
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  animation: breathing 2s infinite, background 2s infinite;
 }
-@media screen and (max-width: 800px) {
+.main-image-wrapper .button-wrap {
+  z-index: 1;
+  position: absolute;
+  transform: translateY(50px);
+}
+.main-image-wrapper .button-wrap a {
+  background-color: #00a5f4;
+  color: #fff;
+  padding: 15px 35px;
+  border-radius: 15px;
+  font-weight: bold;
+  border: solid 2px #fff;
+  font-size: 1.5rem;
+  animation: background 3s infinite;
+  transition: all .2s;
+  background-size: 250% 700%;
+  background-image: linear-gradient(120deg,hsla(0,0%,100%,.1) 36%,hsla(0,0%,100%,.8) 43%,hsla(0,0%,100%,.1) 50%);
+}
+@keyframes wobble-bottom {
+  0%, 100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+
+  10% {
+    transform: translateX(-8px) rotate(-2deg);
+  }
+
+  20% {
+    transform: translateX(4px) rotate(2deg);
+  }
+
+  30% {
+    transform: translateX(-4px) rotate(-1.5deg);
+  }
+
+  40% {
+    transform: translateX(4px) rotate(1.5deg);
+  }
+
+  50% {
+    transform: translateX(0px) rotate(0deg);
+  }
+}
+@keyframes background {
+  0% {
+    background-position: 100% 0, 0 0;
+  }
+
+  50% {
+    background-position: 0 0, 0 0;
+  }
+}
+@keyframes breathing {
+  0% {
+    filter: drop-shadow(1px 1px 1px pink);
+  }
+  50% {
+    filter: drop-shadow(8px 5px 5px pink);
+  }
+  100% {
+    filter: drop-shadow(1px 1px 1px pink);
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 800px) {
   .main-image-wrapper .vn-text {
-    top: 20%;
+    width: 70% !important;
+  }
+}
+@media screen and (max-width: 960px) {
+  .main-image-wrapper {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/bg-girl.png');
+    background-size: cover;
+    background-position: 35% 10%;
+  }
+  .main-image-wrapper .vn-text {
+    top: auto;
+    bottom: 53%;
+    right: 50%;
+    width: 60%;
+    transform: translateX(50%);
+  }
+  .main-image-wrapper .iphone {
+    right: 40%;
+    width: 25%;
+    transform: translateX(50%);
+  }
+} 
+@media screen and (max-width: 640px) {
+  .main-image-wrapper .vn-text {
+    width: 85%;
   }
 }
